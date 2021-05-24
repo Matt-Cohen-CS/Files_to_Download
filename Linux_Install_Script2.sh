@@ -135,6 +135,12 @@ sudo apt --yes --allow-unauthenticated install  openssh-server
 sudo apt --yes --allow-unauthenticated install  tigervnc-viewer # for some reason this fails but installs it. No clue why it does this
 set -e
 
+echo -e '\nAdding SSH key to user'
+echo "Please type your email address"
+read name
+ssh-keygen -t ed25519 -C "$name"
+eval "$(ssh-agent -s)"
+
 # Step 10: Setting Gnome favorites
 gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed s/.$//), 'code_code.desktop']"
 gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed s/.$//), 'virtualbox.desktop']"
