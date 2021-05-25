@@ -135,11 +135,18 @@ sudo apt --yes --allow-unauthenticated install  openssh-server
 sudo apt --yes --allow-unauthenticated install  tigervnc-viewer # for some reason this fails but installs it. No clue why it does this
 set -e
 
-echo -e '\nAdding SSH key to user'
-echo "Please type your email address"
-read name
-ssh-keygen -t ed25519 -C "$name"
-eval "$(ssh-agent -s)"
+echo "Checking if SSH directory exists..."
+if [ -d "~/.ssh" ]
+then
+    echo -e '\nAdding SSH key to user'
+    echo "Please type your email address"
+    read name
+    ssh-keygen -t ed25519 -C "$name"
+    eval "$(ssh-agent -s)"
+else
+    echo "SSH Directory exists..."
+fi
+
 
 # Step 10: Setting Gnome favorites
 gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed s/.$//), 'code_code.desktop']"
