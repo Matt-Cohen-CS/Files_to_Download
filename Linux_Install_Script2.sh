@@ -10,8 +10,7 @@ set -e # abort the script if anything returns a non-zero value
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # echo an error message before exiting
-trap 'echo "\"${last_command}\" command failed with exit code $?."' EXIT
-
+#trap 'echo "\"${last_command}\" command failed with exit code $?."' EXIT
 
 # Step 1: Sanity Check
 #checks if the OS is Ubuntu
@@ -135,16 +134,16 @@ sudo apt --yes --allow-unauthenticated install  openssh-server
 sudo apt --yes --allow-unauthenticated install  tigervnc-viewer # for some reason this fails but installs it. No clue why it does this
 set -e
 
-echo "Checking if SSH directory exists..."
-if [ -d "~/.ssh" ]
+echo "Checking if SSH files exists..."
+if [ -f ~/.ssh/id*.pub ] # -f is a file checker
 then
+    echo "SSH files exists..."
+else
     echo -e '\nAdding SSH key to user'
     echo "Please type your email address"
     read name
     ssh-keygen -t ed25519 -C "$name"
     eval "$(ssh-agent -s)"
-else
-    echo "SSH Directory exists..."
 fi
 
 
