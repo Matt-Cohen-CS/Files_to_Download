@@ -124,6 +124,7 @@ sudo apt --yes --allow-unauthenticated install  htop # Better version of top
 
 set +e # Does not exit after failure
 # Step 8: Getting .vimrc and .bashrc
+echo -e "Using an existing .bashrc & .vimrc & terminator config"
 touch ~/.vimrc
 wget -O ~/.vimrc https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/.vimrc
 echo -e "\nPlease go to 'vim ~/.vimrc' and run ':PlugInstall' this will cause errors until this is done!!"
@@ -132,6 +133,9 @@ touch ~/.bashrc
 wget -O ~/.bashrc https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/.bashrc
 source ~/.vimrc 
 source ~/.bashrc
+
+# Step 8a: Getting terminator config
+wget -O ~/.config/terminator/config https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/config
 
 # Step 9: Installing SSH and VNC
 echo -e '\nInstalling SSH server and Tiger VNC...'
