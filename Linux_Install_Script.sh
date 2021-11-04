@@ -135,7 +135,7 @@ source ~/.vimrc
 source ~/.bashrc
 
 # Step 8a: Getting terminator config
-wget -O ~/.config/terminator/config https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/config
+wget -O ~/.config/terminator/config https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/terminatorConfigFile
 
 # Step 9: Installing SSH and VNC
 echo -e '\nInstalling SSH server and Tiger VNC...'
