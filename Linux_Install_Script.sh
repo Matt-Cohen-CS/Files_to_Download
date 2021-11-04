@@ -58,7 +58,9 @@ sudo apt --yes --allow-unauthenticated install  manpages-dev  # man pages used f
 
 # Step 4d: Installing Java
 echo 'Installing Open JDK & JRE'
-sudo apt --yes --allow-unauthenticated install  openjdk-14-jre
+#sudo apt --yes --allow-unauthenticated install  openjdk-14-jre    # apparently this doesnt work anymore
+sudo apt --yes --allow-unauthenticated install default-jdk
+sudo apt --yes --allow-unauthenticated install default-jre
 
 # Step 4e: Installing pre-reqs needed for all development needs
 echo 'Installing curl'
@@ -124,6 +126,8 @@ set +e # Does not exit after failure
 # Step 8: Getting .vimrc and .bashrc
 touch ~/.vimrc
 wget -O ~/.vimrc https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/.vimrc
+echo -e "\nPlease go to 'vim ~/.vimrc' and run ':PlugInstall' this will cause errors until this is done!!"
+sleep 2
 touch ~/.bashrc
 wget -O ~/.bashrc https://raw.githubusercontent.com/Matt-Cohen-CS/Files_to_Download/main/.bashrc
 source ~/.vimrc 
@@ -145,7 +149,7 @@ else
     read name
     ssh-keygen -t ed25519 -C "$name"
     eval "$(ssh-agent -s)"
-fi
+fi;
 
 
 # Step 10: Setting Gnome favorites
