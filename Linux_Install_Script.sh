@@ -121,6 +121,7 @@ sudo apt --yes --allow-unauthenticated install  cmatrix # just for fun
 sudo apt --yes --allow-unauthenticated install  atop # process reader
 sudo apt --yes --allow-unauthenticated install  pdftk # pdf merger
 sudo apt --yes --allow-unauthenticated install  htop # Better version of top
+sudo apt --yes --allow-unauthenticated install  wireshark # packet sniffer
 
 set +e # Does not exit after failure
 # Step 8: Getting .vimrc and .bashrc
